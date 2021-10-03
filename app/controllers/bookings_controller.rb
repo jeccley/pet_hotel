@@ -1,11 +1,11 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: %i[show edit update destroy]
+
   def index
     @bookings = Booking.all
   end
 
-  def show
-    @booking = Booking.find(params[:id])
-  end
+  def show; end
 
   def new
     @booking = Booking.new
@@ -22,13 +22,9 @@ class BookingsController < ApplicationController
     end
   end
 
-  def edit
-    @booking = Booking.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @booking = Booking.find(params[:id])
-
     if @booking.update(booking_params)
       redirect_to @booking, notice: 'Booking has been updated.'
     else
@@ -38,8 +34,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    booking = Booking.find(params[:id])
-    booking.destroy
+    @booking.destroy
     redirect_to bookings_path, notice: 'Booking has been deleted.'
   end
 
@@ -47,5 +42,12 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:name, :drop_off, :pick_up)
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'The booking you were looking for could not be found.'
+    redirect_to bookings_path
   end
 end
