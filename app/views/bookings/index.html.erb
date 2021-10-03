@@ -1,1 +1,10 @@
+<h1>Bookings</h1>
 <%= link_to "New Booking", new_booking_path %>
+
+<div class="booking">
+  <% @bookings.each do |booking| %>
+    <h2><%= link_to booking.name, booking %><h2>
+    <p><%= booking.drop_off %></p>
+    <p><%= booking.pick_up %></p>
+  <% end %>
+</div>
