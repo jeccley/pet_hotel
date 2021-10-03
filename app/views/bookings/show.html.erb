@@ -1,4 +1,5 @@
 <%= title @booking.name, "Bookings" %>
 <h1><%= @booking.name %></h1>
+  <%= link_to "Edit Booking", edit_booking_path(@booking) %>
   <p><%= @booking.drop_off %></p>
   <p><%= @booking.pick_up %></p>
