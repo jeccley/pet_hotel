@@ -1,11 +1,12 @@
 require "rails_helper"
 
 RSpec.feature "Users can create new bookings" do
-  scenario "with valid attributes" do
+  before do
     visit "/"
-    
-    click_link "New Booking"
-    
+    click_link "New Booking"    
+  end
+  
+  scenario "with valid attributes" do
     fill_in "Name", with: "Regular Customer"
     fill_in "Drop off", with: Date.today
     fill_in "Pick up", with: Date.today + 14
@@ -14,9 +15,17 @@ RSpec.feature "Users can create new bookings" do
     
     expect(page).to have_content "Booking has been created."
     booking = Booking.find_by!(name: "Regular Customer")
-      expect(page.current_url).to eq booking_url(booking)
-      
-      title = "Regular Customer - Bookings - Pet Hotel"
-      expect(page).to have_title title
+    expect(page.current_url).to eq booking_url(booking)
+    
+    title = "Regular Customer - Bookings - Pet Hotel"
+    expect(page).to have_title title
   end
+  
+  scenario "when providing invalid attributes" do
+    click_button "Create Booking"
+    
+    expect(page).to have_content "Booking has not been created."
+    expect(page).to have_content "Name can't be blank"
+  end
+    
 end

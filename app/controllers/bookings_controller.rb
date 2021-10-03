@@ -16,6 +16,8 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to @booking, notice: "Booking has been created."
     else
+      flash.now[:alert] = "Booking has not been created."
+      render "new"
     end
   end
   

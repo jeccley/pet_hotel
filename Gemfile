@@ -34,6 +34,8 @@ group :development, :test do
   
   gem 'rspec-rails', '~> 4.0.0' 
   gem 'rexml'
+  gem 'guard'
+  gem 'guard-rspec'
 end
 
 group :development do
