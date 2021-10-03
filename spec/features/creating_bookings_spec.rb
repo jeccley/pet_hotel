@@ -13,5 +13,10 @@ RSpec.feature "Users can create new bookings" do
     click_button "Create Booking"
     
     expect(page).to have_content "Booking has been created."
+    booking = Booking.find_by!(name: "Regular Customer")
+      expect(page.current_url).to eq booking_url(booking)
+      
+      title = "Regular Customer - Bookings - Pet Hotel"
+      expect(page).to have_title title
   end
 end
