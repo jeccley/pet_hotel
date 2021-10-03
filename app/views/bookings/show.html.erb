@@ -1,5 +1,8 @@
 <%= title @booking.name, "Bookings" %>
 <h1><%= @booking.name %></h1>
   <%= link_to "Edit Booking", edit_booking_path(@booking) %>
+  <%= link_to "Delete Booking", booking_path(@booking),
+              method: :delete,
+              data: { confirm: "Are you sure you want to delete this booking?" } %>
   <p><%= @booking.drop_off %></p>
   <p><%= @booking.pick_up %></p>
