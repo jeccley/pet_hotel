@@ -13,4 +13,11 @@
       <li><%= link_to "New Pet", new_booking_pet_path(@booking) %></li>
     </ul>
 </header>
-
+<ul class="tickets">
+  <% @booking.pets.each do |pet| %>
+    <li>
+      #<%= pet.id %> -
+      <%= link_to pet.name, [@booking, pet] %>
+    </li>
+  <% end %>
+</ul>
