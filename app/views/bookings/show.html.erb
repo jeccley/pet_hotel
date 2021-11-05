@@ -6,3 +6,11 @@
               data: { confirm: "Are you sure you want to delete this booking?" } %>
   <p><%= @booking.drop_off %></p>
   <p><%= @booking.pick_up %></p>
+  <header>
+    <h2>Pets</h2>
+
+    <ul class="actions">
+      <li><%= link_to "New Pet", new_booking_pet_path(@booking) %></li>
+    </ul>
+</header>
+

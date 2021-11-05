@@ -1,0 +1,33 @@
+<%= form_with(model: [booking, pet], local: true) do |form| %>
+  <% if pet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pet.errors.count, "error") %>
+      prohibited this project from being saved:</h2>
+
+      <ul>
+        <% pet.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :animal %><br>
+    <%= form.select :animal,
+          {
+            'Rabbits' => ['Large Rabbit', 'Rabbit', 'Dwarf Rabbit', 'House Rabbit'],
+            'Small Pets' => ['Guinea Pig', 'Hamster', 'Gerbil', 'Mouse', 'Rat'],
+            'Birds' => ['Budgie', 'Canary'],
+            'Other' => ['Hedgehog', 'Tortoise']
+          }, prompt: 'Pick one' %>
+  </p>
+  <p>
+    <%= form.label :vaccinated %><br>
+    <%= form.check_box :vaccinated %>
+  </p>
+  <%= form.submit %>
+<% end %>
