@@ -10,25 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_05_092750) do
-
-  create_table "bookings", force: :cascade do |t|
-    t.string "name"
-    t.date "drop_off"
-    t.date "pick_up"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+ActiveRecord::Schema.define(version: 20_211_213_122_102) do
+  create_table 'bookings', force: :cascade do |t|
+    t.string 'name'
+    t.date 'drop_off'
+    t.date 'pick_up'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "pets", force: :cascade do |t|
-    t.string "name"
-    t.string "animal"
-    t.boolean "vaccinated"
-    t.integer "booking_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["booking_id"], name: "index_pets_on_booking_id"
+  create_table 'customers', force: :cascade do |t|
+    t.string 'name'
+    t.string 'phone'
+    t.string 'email'
+    t.text 'notes'
+    t.text 'vet_details'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  add_foreign_key "pets", "bookings"
+  create_table 'pets', force: :cascade do |t|
+    t.string 'name'
+    t.string 'animal'
+    t.boolean 'vaccinated'
+    t.integer 'booking_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['booking_id'], name: 'index_pets_on_booking_id'
+  end
+
+  add_foreign_key 'pets', 'bookings'
 end

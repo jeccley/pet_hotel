@@ -1,0 +1,12 @@
+<h1>Customer</h1>
+<%= link_to "New Customer", new_customer_path %>
+
+<div class="customer">
+  <% @customers.each do |customer| %>
+    <h2><%= link_to customer.name, customer %><h2>
+    <p><%= customer.phone %></p>
+    <p><%= customer.email %></p>
+    <p><%= customer.notes %></p>
+    <p><%= customer.vet_details %></p>
+  <% end %>
+</div>
