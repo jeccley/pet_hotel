@@ -1,42 +1,14 @@
-<%= form_with(model: [customer, pet], local: true) do |form| %>
-  <% if pet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pet.errors.count, "error") %>
-      prohibited this project from being saved:</h2>
-
-      <ul>
-        <% pet.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.label :animal %><br>
-    <%= form.select :animal,
-          {
-            'Rabbits' => ['Large Rabbit', 'Rabbit', 'Dwarf Rabbit', 'House Rabbit'],
-            'Small Pets' => ['Guinea Pig', 'Hamster', 'Gerbil', 'Mouse', 'Rat'],
-            'Birds' => ['Budgie', 'Canary'],
-            'Other' => ['Hedgehog', 'Tortoise']
-          }, prompt: 'Pick one' %>
-  </p>
-  <p>
-    <%= form.label :vaccinated %>
-    <%= form.check_box :vaccinated %>
-  </p>
-  <p>
-    <%= form.label :status %>
-    <%= form.select :status, ["Active", "Inactive"] %>
-  </p>
-
-  <div>
-    <%= form.label :notes %>
-    <%= form.text_area :notes, placeholder: "Additional notes about the pet" %>
-  </div>
-  <%= form.submit %>
+<%= bootstrap_form_with(model: [customer, pet], local: true, label_errors: true) do |form| %>
+  <%= form.text_field :name %>
+  <%= form.select :animal,
+        {
+          'Rabbits' => ['Large Rabbit', 'Rabbit', 'Dwarf Rabbit', 'House Rabbit'],
+          'Small Pets' => ['Guinea Pig', 'Hamster', 'Gerbil', 'Mouse', 'Rat'],
+          'Birds' => ['Budgie', 'Canary'],
+          'Other' => ['Hedgehog', 'Tortoise']
+        }, prompt: 'Pick one' %>
+  <%= form.check_box :vaccinated %>
+  <%= form.select :status, ["Active", "Inactive"] %>
+  <%= form.text_area :notes, placeholder: "Additional notes about the pet" %>
+  <%= form.primary %>
 <% end %>

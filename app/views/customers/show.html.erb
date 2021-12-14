@@ -1,9 +1,16 @@
 <%= title @customer.name, "Customers" %>
-<h1><%= @customer.name %></h1>
-<%= link_to "Edit Customer", edit_customer_path(@customer) %>
-<%= link_to "Delete Customer", customer_path(@customer),
-            method: :delete,
-            data: { confirm: "Are you sure you want to delete this customer?" } %>
+
+<header>
+  <h1><%= @customer.name %></h1>
+  <ul class="actions">
+    <li><%= link_to "Edit Customer", edit_customer_path(@customer), class: "edit" %></li>
+    <li><%= link_to "Delete Customer", customer_path(@customer),
+                    method: :delete,
+                    data: { confirm: "Are you sure you want to delete this customer?" },
+                    class: "delete" %></li>
+  </ul>
+</header>
+
 <p><%= @customer.phone %></p>
 <p><%= @customer.email %></p>
 <p><%= @customer.notes %></p>
@@ -13,7 +20,7 @@
   <h2>Pets</h2>
 
   <ul class="actions">
-    <li><%= link_to "New Pet", new_customer_pet_path(@customer) %></li>
+    <li><%= link_to "New Pet", new_customer_pet_path(@customer), class: "new" %></li>
   </ul>
 </header>
 
@@ -29,7 +36,7 @@
 <header>
   <h2>Bookings</h2>
   <ul class="actions">
-    <li><%= link_to "New Booking", new_customer_booking_path(@customer) %></li>
+    <li><%= link_to "New Booking", new_customer_booking_path(@customer), class: "new" %></li>
   </ul>
 </header>
 

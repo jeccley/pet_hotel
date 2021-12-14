@@ -1,40 +1,8 @@
-<%= form_with(model: customer, local:true) do |form| %>
-  <% if customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(customer.errors.count, "error") %>
-      prohibited this customer from being saved:</h2>
-      <ul>
-        <% customer.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :phone %>
-    <%= form.telephone_field :phone %>
-  </div>
-
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </div>
-
-  <div>
-    <%= form.label :notes %>
-    <%= form.text_area :notes, placeholder: "Additional notes about the customer" %>
-  </div>
-
-  <div>
-    <%= form.label :vet_details %>
-    <%= form.text_area :vet_details, placeholder: "Vet name and contact information" %>
-  </div>
-
-  <%= form.submit %>
+<%= bootstrap_form_with(model: customer, local: true, label_errors: true) do |form| %>
+  <%= form.text_field :name %>
+  <%= form.telephone_field :phone %>
+  <%= form.email_field :email %>
+  <%= form.text_area :notes, placeholder: "Additional notes about the customer" %>
+  <%= form.text_area :vet_details, placeholder: "Vet name and contact information" %>
+  <%= form.primary %>
 <% end %>
