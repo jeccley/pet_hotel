@@ -12,6 +12,14 @@
     <h3><%= link_to customer.name, customer %></h3>
     <table>
       <tr>
+        <th>Bookings:</th>
+        <td><%= link_to customer.bookings.count, customer_bookings_path(customer) %></td>
+      </tr>
+      <tr>
+        <th>Pets:</th>
+        <td><%= link_to customer.pets.count, customer_pets_path(customer) %></td>
+      </tr>
+      <tr>
         <th>Phone:</th>
         <td><%= customer.phone %></td>
       </tr>
