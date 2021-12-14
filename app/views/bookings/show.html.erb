@@ -3,7 +3,7 @@
   <h1>Booking for <%= @customer.name %> on <%= @booking.drop_off %></h1>
   <ul class="actions">
     <li><%= link_to "Edit Booking", edit_customer_booking_path(@customer, @booking), class: "edit" %></li>
-    <li><%= link_to "Delete Booking", edit_customer_booking_path(@customer, @booking),
+    <li><%= link_to "Delete Booking", customer_booking_path(@customer, @booking),
                     method: :delete,
                     data: { confirm: "Are you sure you want to delete this booking?" },
                     class: "delete" %></li>
