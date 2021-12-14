@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_122102) do
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.string "animal"
-    t.boolean "vaccinated"
+    t.boolean "vaccinated", default: false
     t.string "status"
     t.text "notes"
     t.integer "customer_id", null: false

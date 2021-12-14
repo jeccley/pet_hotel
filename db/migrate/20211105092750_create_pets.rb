@@ -3,7 +3,7 @@ class CreatePets < ActiveRecord::Migration[6.1]
     create_table :pets do |t|
       t.string :name
       t.string :animal
-      t.boolean :vaccinated
+      t.boolean :vaccinated, default: false
       t.string :status
       t.text :notes
       t.references :customer, null: false, foreign_key: true

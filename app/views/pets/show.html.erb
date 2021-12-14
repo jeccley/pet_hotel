@@ -1,16 +1,30 @@
-<div class="pet">
-  <header>
-    <h1><%= @customer.name %></h1>
-    <h2><%= @pet.name %></h2>
-  </header>
-  <%= link_to "Edit Pet", edit_customer_pet_path(@customer, @pet) %>
-  <%= link_to "Delete Pet", customer_pet_path(@customer, @pet),
-              method: :delete,
-              data: { confirm: "Are you sure you want to delete this pet?" } %>
-
-  <ul class="list">
-  <li>Type of animal: <%= @pet.animal %></li>
-  <li>Vaccination status: <%= @pet.vaccinated.to_s.capitalize %></li>
-  <li>Status: <%= @pet.status %></li>
-  <li>Notes: <%= @pet.notes %></li>
+<header>
+  <h1><%= @pet.name %> (<%= @customer.name %>)</h1>
+  <ul class="actions">
+    <li><%= link_to "Edit Pet", edit_customer_pet_path(@customer, @pet), class: "edit" %></li>
+    <li><%= link_to "Delete Pet", customer_pet_path(@customer, @pet),
+                    method: :delete,
+                    data: { confirm: "Are you sure you want to delete this pet?" },
+                    class: "delete" %></li>
+  </ul>
+</header>
+<div class="details">
+  <h4>Notes</h4>
+  <p>
+    <%= @pet.notes %>
+  </p>
+  <table>
+    <tr>
+      <th>Animal:</th>
+      <td><%= @pet.animal %></td>
+    </tr>
+    <tr>
+      <th>Vaccinated:</th>
+      <td><%= @pet.vaccinated.to_s.capitalize %></td>
+    </tr>
+    <tr>
+      <th>Status:</th>
+      <td><%= @pet.status %></td>
+    </tr>
+  </table>
 </div>

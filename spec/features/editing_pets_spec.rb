@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Users can edit existing bookings' do
+RSpec.feature 'Users can edit existing pets' do
   let(:customer) { FactoryBot.create(:customer) }
   let(:pet) { FactoryBot.create(:pet, customer: customer) }
 

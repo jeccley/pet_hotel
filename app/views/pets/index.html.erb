@@ -1,12 +1,30 @@
-<h1><%= @customer.name %> - Pets</h1>
-<%= link_to "New Pet", new_customer_pet_path(@customer) %>
+<header>
+  <h1>Pets Owned By <%= @customer.name %></h1>
+  <ul class="actions">
+    <li><%= link_to "New Pet", new_customer_pet_path(@customer), class: "new" %></li>
+  </ul>
+</header>
 
 <div class="pet">
   <% @customer.pets.each do |pet| %>
-    <h2><%= link_to pet.name, customer_pet_path(@customer, pet) %></h2>
-    <p><%= pet.animal %></name>
-    <p><%= pet.vaccinated.to_s.capitalize %></p>
-    <p><%= pet.status %></p>
-    <p><%= pet.notes %></p>
+    <h3><%= link_to pet.name, customer_pet_path(@customer, pet) %></h3>
+    <h4>Notes</h4>
+    <p>
+      <%= pet.notes %>
+    </p>
+    <table>
+      <tr>
+        <th>Animal:</th>
+        <td><%= pet.animal %></td>
+      </tr>
+      <tr>
+        <th>Vaccinated:</th>
+        <td><%= pet.vaccinated.to_s.capitalize %></td>
+      </tr>
+      <tr>
+        <th>Status:</th>
+        <td><%= pet.status %></td>
+      </tr>
+    </table>
   <% end %>
 </div>

@@ -1,11 +1,26 @@
-<h1><%= @customer.name %> - Bookings</h1>
-<%= link_to "New Booking", new_customer_booking_path(@customer) %>
+<header>
+  <h1>Bookings for <%= @customer.name %></h1>
+  <ul class="actions">
+    <li><%= link_to "New Booking", new_customer_booking_path(@customer), class: "new" %></li>
+  </ul>
+</header>
 
 <div class="booking">
   <% @customer.bookings.each do |booking| %>
-    <h2><%= link_to booking.drop_off, customer_booking_path(@customer, booking) %></h2>
-    <p><%= booking.drop_off %></p>
-    <p><%= booking.pick_up %></p>
-    <p><%= booking.notes %></p>
+    <h3><%= link_to booking.drop_off, customer_booking_path(@customer, booking) %></h3>
+    <h4>Notes</h4>
+    <p>
+      <%= booking.notes %>
+    </p>
+    <table>
+      <tr>
+        <th>Drop Off:</th>
+        <td><%= booking.drop_off %></td>
+      </tr>
+      <tr>
+        <th>Pick Up:</th>
+        <td><%= booking.pick_up %></td>
+      </tr>
+    </table>
   <% end %>
 </div>

@@ -1,7 +1,5 @@
-<headler>
-  <h1>
-    <small><%= @customer.name %></small> - New Pet
-  </h1>
+<header>
+  <h1>New Pet for <%= @customer.name %></h1>
 </header>
 
 <%= render "form", customer: @customer, pet: @pet %>

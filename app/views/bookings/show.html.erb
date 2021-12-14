@@ -1,8 +1,27 @@
 <%= title @booking.drop_off, "Bookings" %>
-<h1><%= @customer.name %> - <%= @booking.drop_off %></h1>
-<%= link_to "Edit Booking", edit_customer_booking_path(@customer, @booking) %>
-<%= link_to "Delete Booking", customer_booking_path(@customer, @booking),
-            method: :delete,
-            data: { confirm: "Are you sure you want to delete this booking?" } %>
-<p><%= @booking.pick_up %></p>
-<p><%= @booking.notes %></p>
+<header>
+  <h1>Booking for <%= @customer.name %> on <%= @booking.drop_off %></h1>
+  <ul class="actions">
+    <li><%= link_to "Edit Booking", edit_customer_booking_path(@customer, @booking), class: "edit" %></li>
+    <li><%= link_to "Delete Booking", edit_customer_booking_path(@customer, @booking),
+                    method: :delete,
+                    data: { confirm: "Are you sure you want to delete this booking?" },
+                    class: "delete" %></li>
+  </ul>
+</header>
+<div class="details">
+  <h4>Notes</h4>
+  <p>
+    <%= @booking.notes %>
+  </p>
+  <table>
+    <tr>
+      <th>Drop Off:</th>
+      <td><%= @booking.drop_off %></td>
+    </tr>
+    <tr>
+      <th>Pick Up:</th>
+      <td><%= @booking.pick_up %></td>
+    </tr>
+  </table>
+</div>

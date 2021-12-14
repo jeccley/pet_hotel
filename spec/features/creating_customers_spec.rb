@@ -19,7 +19,7 @@ RSpec.feature 'Users can create new customers' do
     customer = Customer.find_by!(name: 'Jonathan Eccles')
     expect(page.current_url).to eq customer_url(customer)
 
-    title = 'Jonathan Eccles - Customers - Pet Hotel'
+    title = 'Jonathan Eccles - Customer - Pet Hotel'
     expect(page).to have_title title
   end
 

@@ -1,4 +1,4 @@
-<%= title @customer.name, "Customers" %>
+<%= title @customer.name, "Customer" %>
 
 <header>
   <h1><%= @customer.name %></h1>
@@ -10,14 +10,28 @@
                     class: "delete" %></li>
   </ul>
 </header>
-
-<p><%= @customer.phone %></p>
-<p><%= @customer.email %></p>
-<p><%= @customer.notes %></p>
-<p><%= @customer.vet_details %></p>
-
+<div class="details">
+  <h4>Notes</h4>
+  <p>
+    <%= @customer.notes %>
+  </p>
+  <table>
+    <tr>
+      <th>Phone:</th>
+      <td><%= @customer.phone %></td>
+    </tr>
+    <tr>
+      <th>Email:</th>
+      <td><%= mail_to @customer.email, @customer.email, subject: "Katie's Bunny Boarding: " %></td>
+    </tr>
+    <tr>
+      <th>Vet Details:</th>
+      <td><%= @customer.vet_details %></td>
+    </tr>
+  </table>
+</div>
 <header>
-  <h2>Pets</h2>
+  <h3>Pets</h3>
 
   <ul class="actions">
     <li><%= link_to "New Pet", new_customer_pet_path(@customer), class: "new" %></li>
@@ -27,14 +41,13 @@
 <ul class="pets">
   <% @customer.pets.each do |pet| %>
     <li>
-      #<%= pet.id %> -
       <%= link_to pet.name, [@customer, pet] %>
     </li>
   <% end %>
 </ul>
 
 <header>
-  <h2>Bookings</h2>
+  <h3>Bookings</h3>
   <ul class="actions">
     <li><%= link_to "New Booking", new_customer_booking_path(@customer), class: "new" %></li>
   </ul>
