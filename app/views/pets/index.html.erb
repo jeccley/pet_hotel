@@ -1,0 +1,12 @@
+<h1><%= @customer.name %> - Pets</h1>
+<%= link_to "New Pet", new_customer_pet_path(@customer) %>
+
+<div class="pet">
+  <% @customer.pets.each do |pet| %>
+    <h2><%= link_to pet.name, customer_pet_path(@customer, pet) %></h2>
+    <p><%= pet.animal %></name>
+    <p><%= pet.vaccinated.to_s.capitalize %></p>
+    <p><%= pet.status %></p>
+    <p><%= pet.notes %></p>
+  <% end %>
+</div>

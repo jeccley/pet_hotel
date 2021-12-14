@@ -33,5 +33,10 @@
     <%= form.label :status %>
     <%= form.select :status, ["Active", "Inactive"] %>
   </p>
+
+  <div>
+    <%= form.label :notes %>
+    <%= form.text_area :notes, placeholder: "Additional notes about the pet" %>
+  </div>
   <%= form.submit %>
 <% end %>

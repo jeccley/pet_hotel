@@ -4,5 +4,6 @@ FactoryBot.define do
     animal { 'Rabbit' }
     vaccinated { true }
     status { 'Active' }
+    notes { 'A particularly sensitive soul that needs peace and quiet!' }
   end
 end

@@ -20,7 +20,27 @@ class PetsController < ApplicationController
 
   def show; end
 
+  def edit; end
+
+  def update
+    if @pet.update(pet_params)
+      redirect_to [@customer, @pet], notice: 'Pet has been updated.'
+    else
+      flash.now[:alert] = 'Pet has not been updated.'
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @pet.destroy
+    redirect_to @customer, notice: 'Pet has been deleted.'
+  end
+
   private
+
+  def pet_params
+    params.require(:pet).permit(:name, :animal, :vaccinated, :status, :notes)
+  end
 
   def set_customer
     @customer = Customer.find(params[:customer_id])
@@ -28,9 +48,8 @@ class PetsController < ApplicationController
 
   def set_pet
     @pet = @customer.pets.find(params[:id])
-  end
-
-  def pet_params
-    params.require(:pet).permit(:name, :animal, :vaccinated, :status)
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'The pet you were looking for could not be found.'
+    redirect_to customer_pets_path(@customer)
   end
 end
