@@ -3,11 +3,8 @@ Rails.application.routes.draw do
 
   root 'customers#index'
 
-  resources :bookings do
-    resources :pets
-  end
-
   resources :customers do
     resources :bookings
+    resources :pets
   end
 end

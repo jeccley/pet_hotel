@@ -3,8 +3,9 @@
 
 <div class="booking">
   <% @bookings.each do |booking| %>
-    <h2><%= link_to booking.name, booking %><h2>
+    <h2><%= link_to booking.drop_off, booking %><h2>
     <p><%= booking.drop_off %></p>
     <p><%= booking.pick_up %></p>
+    <p><%= booking.notes %></p>
   <% end %>
 </div>

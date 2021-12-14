@@ -2,29 +2,27 @@ require 'rails_helper'
 
 RSpec.feature 'Users can create new bookings' do
   before do
-    visit '/'
+    customer = FactoryBot.create(:customer, name: 'Regular Customer')
+
+    visit customer_path(customer)
     click_link 'New Booking'
   end
 
   scenario 'with valid attributes' do
-    fill_in 'Name', with: 'Regular Customer'
     fill_in 'Drop off', with: Date.today
     fill_in 'Pick up', with: Date.today + 14
+    fill_in 'Notes', with: 'Look after fluffy foofoo well please!'
 
     click_button 'Create Booking'
 
     expect(page).to have_content 'Booking has been created.'
-    booking = Booking.find_by!(name: 'Regular Customer')
-    expect(page.current_url).to eq booking_url(booking)
-
-    title = 'Regular Customer - Bookings - Pet Hotel'
-    expect(page).to have_title title
   end
 
   scenario 'when providing invalid attributes' do
     click_button 'Create Booking'
 
     expect(page).to have_content 'Booking has not been created.'
-    expect(page).to have_content "Name can't be blank"
+    expect(page).to have_content "Drop off can't be blank"
+    expect(page).to have_content "Pick up can't be blank"
   end
 end

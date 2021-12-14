@@ -15,6 +15,12 @@ RSpec.feature 'Users can create new customers' do
     click_button 'Create Customer'
 
     expect(page).to have_content 'Customer has been created.'
+
+    customer = Customer.find_by!(name: 'Jonathan Eccles')
+    expect(page.current_url).to eq customer_url(customer)
+
+    title = 'Jonathan Eccles - Customers - Pet Hotel'
+    expect(page).to have_title title
   end
 
   scenario 'when providing invalid attributes' do

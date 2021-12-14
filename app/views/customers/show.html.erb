@@ -9,3 +9,18 @@
 <p><%= @customer.notes %></p>
 <p><%= @customer.vet_details %></p>
 
+<header>
+  <h2>Bookings</h2>
+  <ul class="actions">
+    <li><%= link_to "New Booking", new_customer_booking_path(@customer) %></li>
+  </ul>
+</header>
+
+<ul class="bookings">
+  <% @customer.bookings.each do |booking| %>
+    <li>
+      <%= link_to booking.drop_off, [@customer, booking] %> until <%= booking.pick_up %>
+      <br><i><%= booking.notes  %></i>
+    </li>
+  <% end %>
+</ul>

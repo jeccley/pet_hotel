@@ -1,21 +1,18 @@
 class BookingsController < ApplicationController
+  before_action :set_customer
   before_action :set_booking, only: %i[show edit update destroy]
-
-  def index
-    @bookings = Booking.all
-  end
 
   def show; end
 
   def new
-    @booking = Booking.new
+    @booking = @customer.bookings.build
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = @customer.bookings.build(booking_params)
 
     if @booking.save
-      redirect_to @booking, notice: 'Booking has been created.'
+      redirect_to [@customer, @booking], notice: 'Booking has been created.'
     else
       flash.now[:alert] = 'Booking has not been created.'
       render 'new'
@@ -26,7 +23,7 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-      redirect_to @booking, notice: 'Booking has been updated.'
+      redirect_to [@customer, @booking], notice: 'Booking has been updated.'
     else
       flash.now[:alert] = 'Booking has not been updated.'
       render 'edit'
@@ -35,19 +32,23 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to bookings_path, notice: 'Booking has been deleted.'
+    redirect_to @customer, notice: 'Booking has been deleted.'
   end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:name, :drop_off, :pick_up)
+    params.require(:booking).permit(:drop_off, :pick_up, :notes)
+  end
+
+  def set_customer
+    @customer = Customer.find(params[:customer_id])
   end
 
   def set_booking
-    @booking = Booking.find(params[:id])
+    @booking = @customer.bookings.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'The booking you were looking for could not be found.'
-    redirect_to bookings_path
+    redirect_to customer_bookings_path(@customer)
   end
 end

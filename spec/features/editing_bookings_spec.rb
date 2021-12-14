@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can edit existing bookings' do
-  before do
-    FactoryBot.create(:booking, name: 'Regular Customer')
+  let(:customer) { FactoryBot.create(:customer) }
+  let(:booking) { FactoryBot.create(:booking, customer: customer) }
 
-    visit '/'
-    click_link 'Regular Customer'
+  before do
+    visit customer_booking_path(customer, booking)
     click_link 'Edit Booking'
   end
 
   scenario 'with valid attributes' do
-    fill_in 'Name', with: 'Blackberry'
+    fill_in 'Notes', with: 'Look after Blackberry foofoo well please!'
     click_button 'Update Booking'
 
     expect(page).to have_content 'Booking has been updated.'
@@ -18,10 +18,10 @@ RSpec.feature 'Users can edit existing bookings' do
   end
 
   scenario 'when providing invalid attributes' do
-    fill_in 'Name', with: ''
+    fill_in 'Drop off', with: nil
     click_button 'Update Booking'
 
     expect(page).to have_content 'Booking has not been updated.'
-    expect(page).to have_content "Name can't be blank"
+    expect(page).to have_content "Drop off can't be blank"
   end
 end

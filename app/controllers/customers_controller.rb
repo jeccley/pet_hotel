@@ -43,7 +43,7 @@ class CustomersController < ApplicationController
   def set_customer
     @customer = Customer.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = 'The Customer you were looking for could not be found.'
+    flash[:alert] = 'The customer you were looking for could not be found.'
     redirect_to customers_path
   end
 

@@ -1,4 +1,3 @@
-<h1>Edit Booking</h1>
+<h1><%= @customer.name %> - Edit Booking <%= @booking.drop_off %></h1>
 
-<%= render "form", booking: @booking %>
-    
+<%= render "form", customer: @customer, booking: @booking %>
