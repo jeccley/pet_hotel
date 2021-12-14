@@ -16,6 +16,7 @@ RSpec.feature 'Users can create new bookings' do
     click_button 'Create Booking'
 
     expect(page).to have_content 'Booking has been created.'
+    expect(page).to have_content 'Days: 14'
   end
 
   scenario 'when providing invalid attributes' do
