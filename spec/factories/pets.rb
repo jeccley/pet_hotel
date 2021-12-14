@@ -3,5 +3,6 @@ FactoryBot.define do
     name { 'Example Pet' }
     animal { 'Rabbit' }
     vaccinated { true }
+    status { 'Active' }
   end
 end

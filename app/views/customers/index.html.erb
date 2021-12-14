@@ -3,9 +3,9 @@
 
 <div class="customer">
   <% @customers.each do |customer| %>
-    <h2><%= link_to customer.name, customer %><h2>
+    <h2><%= link_to customer.name, customer %></h2>
     <p><%= customer.phone %></p>
-    <p><%= customer.email %></p>
+    <p><%= mail_to customer.email, customer.email, subject: "Katie's Bunny Boarding: " %></p>
     <p><%= customer.notes %></p>
     <p><%= customer.vet_details %></p>
   <% end %>

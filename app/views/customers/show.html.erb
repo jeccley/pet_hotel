@@ -10,6 +10,23 @@
 <p><%= @customer.vet_details %></p>
 
 <header>
+  <h2>Pets</h2>
+
+  <ul class="actions">
+    <li><%= link_to "New Pet", new_customer_pet_path(@customer) %></li>
+  </ul>
+</header>
+
+<ul class="pets">
+  <% @customer.pets.each do |pet| %>
+    <li>
+      #<%= pet.id %> -
+      <%= link_to pet.name, [@customer, pet] %>
+    </li>
+  <% end %>
+</ul>
+
+<header>
   <h2>Bookings</h2>
   <ul class="actions">
     <li><%= link_to "New Booking", new_customer_booking_path(@customer) %></li>
@@ -24,3 +41,4 @@
     </li>
   <% end %>
 </ul>
+

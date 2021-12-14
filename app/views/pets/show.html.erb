@@ -1,12 +1,14 @@
 <div class="pet">
   <header>
-    <h1><%= @booking.name %></h1>
+    <h1><%= @customer.name %></h1>
   </header>
 
   <header>
     <h2><%= @pet.name %></h2>
   </header>
 
-  <%= @pet.animal %>
-  <%= @pet.vaccinated %>
+  <ul class="list">
+  <li>Type of animal: <%= @pet.animal %></li>
+  <li>Vaccination status: <%= @pet.vaccinated.to_s.capitalize %></li>
+  <li>Status: <%= @pet.status %></li>
 </div>

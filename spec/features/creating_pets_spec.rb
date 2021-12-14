@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature 'Users can create new pets' do
   before do
-    booking = FactoryBot.create(:booking, name: 'Regular Customer')
+    customer = FactoryBot.create(:customer, name: 'Regular Customer')
 
-    visit booking_path(booking)
+    visit customer_path(customer)
     click_link 'New Pet'
   end
 
@@ -12,6 +12,7 @@ RSpec.feature 'Users can create new pets' do
     fill_in 'Name', with: 'Thumper'
     select 'Dwarf Rabbit', from: 'Animal'
     check 'Vaccinated'
+    select 'Active'
     click_button 'Create Pet'
 
     expect(page).to have_content 'Pet has been created.'
