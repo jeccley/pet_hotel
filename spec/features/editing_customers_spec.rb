@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Users can edit existing customer' do
   before do
-    FactoryBot.create(:customer, name: 'Regular Customer')
+    FactoryBot.create(:customer, last_name: 'Customer')
 
     visit '/'
     click_link 'Regular Customer'
@@ -18,10 +18,10 @@ RSpec.feature 'Users can edit existing customer' do
   end
 
   scenario 'when providing invalid attributes' do
-    fill_in 'Name', with: ''
+    fill_in 'First name', with: ''
     click_button 'Update Customer'
 
     expect(page).to have_content 'Customer has not been updated.'
-    expect(page).to have_content "Name can't be blank"
+    expect(page).to have_content "First name can't be blank"
   end
 end

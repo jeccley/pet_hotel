@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Bookings', type: :request do
   it 'Handles a missing booking correctly' do
-    customer = FactoryBot.create(:customer, name: 'Regular Customer')
+    customer = FactoryBot.create(:customer)
     get customer_booking_path(customer, 'not-here')
 
     expect(response).to redirect_to(customer_bookings_path(customer))

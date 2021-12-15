@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Users can delete customers' do
   scenario 'successfully' do
-    FactoryBot.create(:customer, name: 'Regular Customer')
+    FactoryBot.create(:customer, last_name: 'Customer')
 
     visit '/'
     click_link 'Regular Customer'

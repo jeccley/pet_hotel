@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Users can view customer' do
   scenario 'with the customer details' do
-    customer = FactoryBot.create(:customer, name: 'Regular Customer')
+    customer = FactoryBot.create(:customer, last_name: 'Customer')
 
     visit '/'
     click_link 'Regular Customer'

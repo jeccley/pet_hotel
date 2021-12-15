@@ -1,5 +1,6 @@
 <%= bootstrap_form_with(model: customer, local: true, label_errors: true) do |form| %>
-  <%= form.text_field :name %>
+  <%= form.text_field :first_name %>
+  <%= form.text_field :last_name %>
   <%= form.telephone_field :phone %>
   <%= form.email_field :email %>
   <%= form.text_area :notes, placeholder: "Additional notes about the customer" %>

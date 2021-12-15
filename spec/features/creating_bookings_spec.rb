@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Users can create new bookings' do
   before do
-    customer = FactoryBot.create(:customer, name: 'Regular Customer')
+    customer = FactoryBot.create(:customer, last_name: 'Customer')
 
     visit customer_path(customer)
     click_link 'New Booking'

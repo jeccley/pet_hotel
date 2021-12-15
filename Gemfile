@@ -7,6 +7,7 @@ ruby '3.0.2'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use sqlite3 as the database for Active Record
 group :development, :test do
+  gem 'spring-commands-rspec'
   gem 'sqlite3', '~> 1.4'
 end
 group :production do

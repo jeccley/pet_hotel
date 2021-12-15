@@ -7,7 +7,8 @@ RSpec.feature 'Users can create new customers' do
   end
 
   scenario 'with valid attributes' do
-    fill_in 'Name', with: 'Jonathan Eccles'
+    fill_in 'First name', with: 'Jonathan'
+    fill_in 'Last name', with: 'Eccles'
     fill_in 'Phone', with: '07931514075'
     fill_in 'Email', with: 'text@example.com'
     fill_in 'Notes', with: 'Some additional information about the customer'
@@ -16,7 +17,7 @@ RSpec.feature 'Users can create new customers' do
 
     expect(page).to have_content 'Customer has been created.'
 
-    customer = Customer.find_by!(name: 'Jonathan Eccles')
+    customer = Customer.find_by!(last_name: 'Eccles')
     expect(page.current_url).to eq customer_url(customer)
 
     title = 'Jonathan Eccles - Customer - Pet Hotel'
@@ -27,7 +28,8 @@ RSpec.feature 'Users can create new customers' do
     click_button 'Create Customer'
 
     expect(page).to have_content 'Customer has not been created.'
-    expect(page).to have_content "Name can't be blank"
+    expect(page).to have_content "First name can't be blank"
+    expect(page).to have_content "Last name can't be blank"
     expect(page).to have_content "Phone can't be blank"
     expect(page).to have_content "Email can't be blank"
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_122102) do
+ActiveRecord::Schema.define(version: 2021_12_15_064101) do
 
   create_table "bookings", force: :cascade do |t|
     t.date "drop_off"
@@ -23,13 +23,14 @@ ActiveRecord::Schema.define(version: 2021_12_13_122102) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
     t.string "phone"
     t.string "email"
     t.text "notes"
     t.text "vet_details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "last_name"
   end
 
   create_table "pets", force: :cascade do |t|
