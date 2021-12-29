@@ -1,5 +1,6 @@
 class Booking < ApplicationRecord
   belongs_to :customer
+  belongs_to :author, class_name: 'User'
 
   validates :drop_off, :pick_up, presence: true
 

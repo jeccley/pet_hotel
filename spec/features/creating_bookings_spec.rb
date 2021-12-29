@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can create new bookings' do
+  let(:user) { FactoryBot.create(:user) }
+
   before do
+    login_as(user)
     customer = FactoryBot.create(:customer, last_name: 'Customer')
 
     visit customer_path(customer)
@@ -17,6 +20,9 @@ RSpec.feature 'Users can create new bookings' do
 
     expect(page).to have_content 'Booking has been created.'
     expect(page).to have_content 'Days: 14'
+    within('.attributes') do
+      expect(page).to have_content "Taken by: #{user.email}"
+    end
   end
 
   scenario 'when providing invalid attributes' do

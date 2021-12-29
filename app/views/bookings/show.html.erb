@@ -9,7 +9,18 @@
                     class: "delete" %></li>
   </ul>
 </header>
-<div class="details">
+<table class="attributes">
+  <tr>
+    <th>Taken by:</th>
+    <td><%= @booking.author.email %></td>
+    
+  </tr>
+  <tr>
+    <th>Created:</th>
+    <td><%= time_ago_in_words(@booking.created_at) %> ago</td>
+  </tr>
+</table>
+<div class="booking">
   <h4>Notes</h4>
   <p>
     <%= @booking.notes %>
