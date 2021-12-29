@@ -8,6 +8,7 @@ class PetsController < ApplicationController
 
   def create
     @pet = @customer.pets.build(pet_params)
+    @pet.author = current_user
 
     if @pet.save
       flash[:notice] = 'Pet has been created.'

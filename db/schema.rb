@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_211_229_171_331) do
+ActiveRecord::Schema.define(version: 20_211_229_181_922) do
   create_table 'bookings', force: :cascade do |t|
     t.date 'drop_off'
     t.date 'pick_up'
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20_211_229_171_331) do
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.string 'last_name'
+    t.integer 'author_id', null: false
+    t.index ['author_id'], name: 'index_customers_on_author_id'
   end
 
   create_table 'pets', force: :cascade do |t|
@@ -43,6 +45,8 @@ ActiveRecord::Schema.define(version: 20_211_229_171_331) do
     t.integer 'customer_id', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'author_id', null: false
+    t.index ['author_id'], name: 'index_pets_on_author_id'
     t.index ['customer_id'], name: 'index_pets_on_customer_id'
   end
 
@@ -60,5 +64,7 @@ ActiveRecord::Schema.define(version: 20_211_229_171_331) do
 
   add_foreign_key 'bookings', 'customers'
   add_foreign_key 'bookings', 'users', column: 'author_id'
+  add_foreign_key 'customers', 'users', column: 'author_id'
   add_foreign_key 'pets', 'customers'
+  add_foreign_key 'pets', 'users', column: 'author_id'
 end

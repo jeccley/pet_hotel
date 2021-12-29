@@ -13,6 +13,7 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
+    @customer.author = current_user
 
     if @customer.save
       redirect_to @customer, notice: 'Customer has been created.'

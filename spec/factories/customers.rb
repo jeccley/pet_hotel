@@ -6,5 +6,6 @@ FactoryBot.define do
     email { 'reg@test.com' }
     notes { 'A bit of a memo about the pets' }
     vet_details { 'Gayton Surgery in Reigate' }
+    association :author, factory: :user
   end
 end

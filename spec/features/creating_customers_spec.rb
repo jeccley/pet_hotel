@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can create new customers' do
+  let(:user) { FactoryBot.create(:user) }
+
   before do
+    login_as(user)
     visit '/'
     click_link 'New Customer'
   end
@@ -16,6 +19,9 @@ RSpec.feature 'Users can create new customers' do
     click_button 'Create Customer'
 
     expect(page).to have_content 'Customer has been created.'
+    within('.attributes') do
+      expect(page).to have_content "Created by: #{user.email}"
+    end
 
     customer = Customer.find_by!(last_name: 'Eccles')
     expect(page.current_url).to eq customer_url(customer)

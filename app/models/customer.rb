@@ -1,4 +1,6 @@
 class Customer < ApplicationRecord
+  belongs_to :author, class_name: 'User'
+
   validates :first_name, :last_name, :phone, :email, presence: true
 
   has_many :bookings, -> { order(drop_off: :asc) }, dependent: :destroy

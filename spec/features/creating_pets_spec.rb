@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can create new pets' do
+  let(:user) { FactoryBot.create(:user) }
+
   before do
+    login_as(user)
     customer = FactoryBot.create(:customer, last_name: 'Customer')
 
     visit customer_path(customer)
@@ -16,6 +19,9 @@ RSpec.feature 'Users can create new pets' do
     click_button 'Create Pet'
 
     expect(page).to have_content 'Pet has been created.'
+    within('.attributes') do
+      expect(page).to have_content "Created by: #{user.email}"
+    end
   end
 
   scenario 'when providing invalid attributes' do
