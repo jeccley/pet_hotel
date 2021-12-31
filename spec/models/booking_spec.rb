@@ -4,10 +4,10 @@ require 'rails_helper'
 
 RSpec.describe Booking, type: :model do
   let(:customer) { FactoryBot.create(:customer) }
-  let(:booking) { FactoryBot.create(:booking, customer:) }
+  let(:booking) { FactoryBot.create(:booking, customer: customer) }
 
   it 'is valid with drop off and pick up dates' do
-    valid_booking = FactoryBot.create(:booking, customer:)
+    valid_booking = FactoryBot.create(:booking, customer: customer)
 
     expect(valid_booking).to be_valid
   end

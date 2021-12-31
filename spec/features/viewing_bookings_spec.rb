@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.feature 'Users can view bookings' do
   let(:customer) { FactoryBot.create(:customer) }
-  let(:booking) { FactoryBot.create(:booking, customer:) }
+  let(:booking) { FactoryBot.create(:booking, customer: customer) }
 
   before do
     visit customer_booking_path(customer, booking)

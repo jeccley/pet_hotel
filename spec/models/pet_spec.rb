@@ -4,10 +4,10 @@ require 'rails_helper'
 
 RSpec.describe Pet, type: :model do
   let(:customer) { FactoryBot.create(:customer) }
-  let(:pet) { FactoryBot.create(:pet, customer:) }
+  let(:pet) { FactoryBot.create(:pet, customer: customer) }
 
   it 'is valid with a name, vaccination status and status' do
-    valid_pet = FactoryBot.create(:pet, customer:, name: 'Example Pet')
+    valid_pet = FactoryBot.create(:pet, customer: customer, name: 'Example Pet')
 
     expect(valid_pet).to be_valid
   end

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.feature 'Users can delete pets' do
   let(:customer) { FactoryBot.create(:customer) }
-  let(:pet) { FactoryBot.create(:pet, customer:) }
+  let(:pet) { FactoryBot.create(:pet, customer: customer) }
 
   before do
     visit customer_pet_path(customer, pet)
