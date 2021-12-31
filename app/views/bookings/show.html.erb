@@ -29,3 +29,23 @@
       </tr>
   </table>
 </div>
+<header>
+  <h3>Pets</h3>
+</header>
+<div>
+  <table>
+    <% @customer.pets.each do |pet| %>
+      <tr>
+        <th><%= pet.name %></th>
+        <% if @booking.booked_pets.exists?(pet_id: pet) %>
+          <td><%= link_to 'Remove from Booking', customer_booking_booked_pet_path(@customer, @booking, pet),
+                      method: :delete,
+                      data: { confirm: "Are you sure you want to remove #{pet.name} from this booking?" },
+                      class: "delete" %></td>
+        <% else %>
+          <td><%== link_to 'Add to Booking', customer_booking_booked_pets_path(@customer, @booking, pet), method: :create, class: "new" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

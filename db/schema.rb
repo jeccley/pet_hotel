@@ -10,41 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_064101) do
-
-  create_table "bookings", force: :cascade do |t|
-    t.date "drop_off"
-    t.date "pick_up"
-    t.text "notes"
-    t.integer "customer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_bookings_on_customer_id"
+ActiveRecord::Schema.define(version: 20_211_215_130_259) do
+  create_table 'booked_pets', force: :cascade do |t|
+    t.integer 'pet_id', null: false
+    t.integer 'booking_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['booking_id'], name: 'index_booked_pets_on_booking_id'
+    t.index ['pet_id'], name: 'index_booked_pets_on_pet_id'
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "phone"
-    t.string "email"
-    t.text "notes"
-    t.text "vet_details"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "last_name"
+  create_table 'bookings', force: :cascade do |t|
+    t.date 'drop_off'
+    t.date 'pick_up'
+    t.text 'notes'
+    t.integer 'customer_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['customer_id'], name: 'index_bookings_on_customer_id'
   end
 
-  create_table "pets", force: :cascade do |t|
-    t.string "name"
-    t.string "animal"
-    t.boolean "vaccinated", default: false
-    t.string "status"
-    t.text "notes"
-    t.integer "customer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_pets_on_customer_id"
+  create_table 'customers', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'phone'
+    t.string 'email'
+    t.text 'notes'
+    t.text 'vet_details'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'last_name'
   end
 
-  add_foreign_key "bookings", "customers"
-  add_foreign_key "pets", "customers"
+  create_table 'pets', force: :cascade do |t|
+    t.string 'name'
+    t.string 'animal'
+    t.boolean 'vaccinated', default: false
+    t.string 'status'
+    t.text 'notes'
+    t.integer 'customer_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['customer_id'], name: 'index_pets_on_customer_id'
+  end
+
+  add_foreign_key 'booked_pets', 'bookings'
+  add_foreign_key 'booked_pets', 'pets'
+  add_foreign_key 'bookings', 'customers'
+  add_foreign_key 'pets', 'customers'
 end

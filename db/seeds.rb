@@ -8,7 +8,8 @@
 
 customer = Customer.create(
   {
-    name: 'Jon Eccles',
+    first_name: 'Jon',
+    last_name: 'Eccles',
     phone: '07791 513121',
     email: 'getjon@me.com',
     notes:

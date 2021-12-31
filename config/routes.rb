@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'customers#index'
 
   resources :customers do
-    resources :bookings
+    resources :bookings do
+      resources :booked_pets, only: %i[create destroy]
+    end
     resources :pets
   end
 end
