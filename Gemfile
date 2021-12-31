@@ -13,7 +13,6 @@ group :development do
   gem 'spring-commands-rspec'
 end
 group :development, :test do
-  gem 'net-smtp', require: false
   gem 'sqlite3', '~> 1.4'
 end
 group :production do
@@ -80,3 +79,5 @@ gem 'bootstrap', '= 4.6.1'
 gem 'bootstrap_form', '= 4.5.0'
 
 gem 'devise', '~> 4.8'
+
+gem 'net-smtp', require: false
