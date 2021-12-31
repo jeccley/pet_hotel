@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'Users can edit existing bookings' do
   let(:customer) { FactoryBot.create(:customer) }
-  let(:booking) { FactoryBot.create(:booking, customer: customer) }
+  let(:booking) { FactoryBot.create(:booking, customer:) }
 
   before do
     visit customer_booking_path(customer, booking)

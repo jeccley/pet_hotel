@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Booking, type: :model do
   let(:customer) { FactoryBot.create(:customer) }
-  let(:booking) { FactoryBot.create(:booking, customer: customer) }
+  let(:booking) { FactoryBot.create(:booking, customer:) }
 
   it 'is valid with drop off and pick up dates' do
-    valid_booking = FactoryBot.create(:booking, customer: customer)
+    valid_booking = FactoryBot.create(:booking, customer:)
 
     expect(valid_booking).to be_valid
   end

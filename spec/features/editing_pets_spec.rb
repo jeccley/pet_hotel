@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'Users can edit existing pets' do
   let(:customer) { FactoryBot.create(:customer) }
-  let(:pet) { FactoryBot.create(:pet, customer: customer) }
+  let(:pet) { FactoryBot.create(:pet, customer:) }
 
   before do
     visit customer_pet_path(customer, pet)

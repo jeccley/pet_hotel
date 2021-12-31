@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'Users can add pets to new bookings' do
   let(:customer) { FactoryBot.create(:customer) }
-  let(:booking) { FactoryBot.create(:booking, customer: customer) }
-  let(:pet) { FactoryBot.create(:pet, customer: customer) }
+  let(:booking) { FactoryBot.create(:booking, customer:) }
+  let(:pet) { FactoryBot.create(:pet, customer:) }
 
   before do
     visit customer_pet_path(customer, pet)

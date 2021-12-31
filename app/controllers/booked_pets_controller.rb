@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BookedPetsController < ApplicationController
   before_action :set_customer
   before_action :set_booking

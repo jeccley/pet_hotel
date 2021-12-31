@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PetsController < ApplicationController
   before_action :set_customer
   before_action :set_pet, only: %i[show edit update destroy]
