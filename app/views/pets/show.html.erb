@@ -8,7 +8,18 @@
                     class: "delete" %></li>
   </ul>
 </header>
+<table class="attributes">
+  <tr>
+    <th>Created by:</th>
+    <td><%= @pet.author.email %></td>
+  </tr>
+  <tr>
+    <th>Created:</th>
+    <td><%= time_ago_in_words(@pet.created_at) %> ago</td>
+  </tr>
+</table>
 <div class="details">
+  <br>
   <h4>Notes</h4>
   <p>
     <%= @pet.notes %>

@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = @customer.bookings.build(booking_params)
+    @booking.author = current_user
 
     if @booking.save
       redirect_to [@customer, @booking], notice: 'Booking has been created.'

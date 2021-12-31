@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can delete customers' do
+  before do
+    login_as(FactoryBot.create(:user, :admin))
+  end
+
   scenario 'successfully' do
     FactoryBot.create(:customer, last_name: 'Customer')
 

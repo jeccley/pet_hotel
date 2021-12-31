@@ -5,5 +5,6 @@ FactoryBot.define do
     vaccinated { true }
     status { 'Active' }
     notes { 'A particularly sensitive soul that needs peace and quiet!' }
+    association :author, factory: :user
   end
 end
